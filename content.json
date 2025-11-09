@@ -40,7 +40,7 @@
       "exp_no": 7,
       "exp_name": "Interfacing Motor Using Relay with Raspberry Pi/ Arduino Based on Temperature",
       "code": "import RPi.GPIO as GPIO\nimport Adafruit_DHT\nimport time\nDHT_SENSOR = Adafruit_DHT.DHT11\nDHT_PIN = 4\nRELAY_PIN = 17\nGPIO.setmode(GPIO.BCM)\nGPIO.setup(RELAY_PIN, GPIO.OUT)\nGPIO.output(RELAY_PIN, GPIO.LOW)\nTEMP_THRESHOLD = 30.0\nprint(\"Temperature-based Motor Control System Started\")\ntry:\n while True:\n humidity, temperature = Adafruit_DHT.read_retry(DHT_SENSOR, DHT_PIN)\n\n if temperature is not None:\n print(f\"Temperature: {temperature:.1f}°C | Humidity: {humidity:.1f}%\")\n if temperature > TEMP_THRESHOLD:\n GPIO.output(RELAY_PIN, GPIO.HIGH)\n print(\"Temperature high! Motor ON.\")\n else:\n GPIO.output(RELAY_PIN, GPIO.LOW)\n print(\"Temperature normal. Motor OFF.\")\n else:\n print(\"Sensor read error!\")\n time.sleep(2)\nexcept KeyboardInterrupt:\n print(\"Program stopped by user.\")\nfinally:\n GPIO.output(RELAY_PIN, GPIO.LOW)\n GPIO.cleanup()",
-      "tinkerLink": "null"
+      "tinkerLink": "https://www.tinkercad.com/things/9Y2H5AmmHmD-relay-dc-motor-with-temp-sensor/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=e0ocp5H5IteBIFTZHNNkA-njJuibPh2ttOh-wb_64pQ"
     },
     {
       "exp_no": 8,
