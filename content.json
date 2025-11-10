@@ -4,37 +4,37 @@
       "exp_no": 1,
       "exp_name": "Interfacing Arduino with Pot and Servo motor",
       "code": "#include <Servo.h>\nServo myservo;\nint servoPin = 2;\nint potPin = A0;\nint value = 0;\nint rot = 0;\nvoid setup()\n{\n pinMode(A0, INPUT);\n myservo.attach(2);\n}\nvoid loop()\n{\n value=analogRead(A0);\n rot=map(value, 0, 1023, 0, 180);\n myservo.write(rot);\n}",
-      "tinkerLink": "https://www.tinkercad.com/things/ashpGK1YRwj/editel?sharecode=HeQARSFOZggz758qyEDbYBsZUHUTVQQmzv9kKwTVTOg"
+      "tinkerLink": "https://www.tinkercad.com/things/b1SkeBhLhDH-pot-and-servomotor-connection/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=03mLTV8REejpzEoo4Ks-_YXIln5Wk3cat9oXPMTHIzE"
     },
     {
       "exp_no": 2,
       "exp_name": "Interfacing Arduino with Stepper Motor",
       "code": "#include <Stepper.h>\nconst int stepsPerRevolution = 200;\nStepper myStepper(stepsPerRevolution, 8, 9, 10, 11);\nvoid setup() {\n myStepper.setSpeed(0);\n}\nvoid loop() {\n int sensorReading = analogRead(A0);\n\n int motorSpeed = map(sensorReading, 0, 1040, 0, 150);\n\n myStepper.setSpeed(motorSpeed);\n\n myStepper.step(stepsPerRevolution / 100);\n\n delay(100);\n}",
-      "tinkerLink": "https://www.tinkercad.com/things/1uLlvNYVJLo-stepper-motor/editel?returnTo=%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=aa5B6qoLrL918rHu8bv2ZcGAYfnT6Ue6309ItIIpL-I"
+      "tinkerLink": "https://www.tinkercad.com/things/2D8sT28ErfD-interfacing-stepper-motor-ex2/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=8-xoE4pIAh1AEfCLsMVHogXpgYLYrJPyLfjUoSTXGjQ"
     },
     {
       "exp_no": 3,
       "exp_name": "Interfacing Arduino with Analog/Digital sensors",
       "code": "int pirSensor = 12;\nint ldrSensor = A0;\nint relay = 2;\nint ldrValue, pirValue;\nunsigned long currentMillis;\nvoid setup()\n{\n Serial.begin(9600);\n pinMode(pirSensor, INPUT);\n pinMode(ldrSensor, INPUT);\n pinMode(relay, OUTPUT);\n}\nvoid loop()\n{\n ldrValue = analogRead(ldrSensor);\n pirValue = digitalRead(pirSensor);\n ldrValue = map(ldrValue, 6, 679, 0, 1023);\n ldrValue = constrain(ldrValue, 0, 1023);\n Serial.println(ldrValue);\n\n if(ldrValue < 500){\n if(pirValue == LOW){\n digitalWrite(relay, LOW);\n } else{\n digitalWrite(relay,HIGH);\n delay(5000);\n }\n }\n else if(ldrSensor >= 500){\n if(pirValue == LOW){\n digitalWrite(relay, LOW);\n } else{\n digitalWrite(relay,LOW);\n }\n }\n}",
-      "tinkerLink": "https://www.tinkercad.com/things/4UwVVXa1oQ0-analog-and-digital-sensor/editel?returnTo=%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=DCGmJrAfw1dyM51hBTK81loXeKsIjq72v0dmEUZFMq0"
+      "tinkerLink": "https://www.tinkercad.com/things/e3QHoTxP4Jf-analog-and-digital/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=xViRCJxl47uqbczruhdt-nrPjIUMmfs7zXjan4bjfQE"
     },
     {
       "exp_no": 4,
       "exp_name": "Interfacing LED/Buzzer with Arduino",
       "code": "const int ledPin = 13;\nconst int buzzerPin = 8;\nvoid setup() {\n pinMode(ledPin, OUTPUT);\n\n pinMode(buzzerPin, OUTPUT);\n}\nvoid loop() {\n digitalWrite(ledPin, HIGH);\n\n tone(buzzerPin, 1000);\n\n delay(1000);\n\n digitalWrite(ledPin, LOW);\n\n noTone(buzzerPin);\n\n delay(2000);\n}",
-      "tinkerLink": "https://www.tinkercad.com/things/ljjNsRLkSTk/editel?returnTo=%2Fdashboard&sharecode=ntk7UMGOejv879w__FtV--jihxQvni0DiTSH4LTcAfI"
+      "tinkerLink": "https://www.tinkercad.com/things/kRihJ2rhiXV-buzzer-and-led/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=KI0ZEOLJmBQW4Hjle8xQJ_99VVRUllnpXeTeTPVgXRo"
     },
     {
       "exp_no": 5,
       "exp_name": "Interfacing Digital sensor PIR with Arduino",
       "code": "const int pirPin = 2;\nconst int ledPin = 13;\nvoid setup() {\n pinMode(ledPin, OUTPUT);\n pinMode(pirPin, INPUT);\n Serial.begin(9600);\n}\nvoid loop() {\n int pirState = digitalRead(pirPin);\n if (pirState == HIGH) {\n digitalWrite(ledPin, HIGH);\n Serial.println(\"Motion detected!\");\n } else {\n digitalWrite(ledPin, LOW);\n }\n delay(100);\n}",
-      "tinkerLink": "https://www.tinkercad.com/things/7rNumXca5JL/editel?returnTo=%2Fdashboard&sharecode=cb7jjDJWxdmH2H2QVmLYmksfqQh9pviNhWdUt6E-ybc"
+      "tinkerLink": "https://www.tinkercad.com/things/iIIVmmyo5ll-neat-snaget/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=RcMedzFVPwK7o4wxy9P95v5wNd-G2MPQh3ktYnZhQCM"
     },
     {
       "exp_no": 6,
       "exp_name": "Interfacing DHT22 Sensor with Arduino",
       "code": "#include \"DHT.h\"\n#define DHTPIN 2\n#define DHTTYPE DHT22\nDHT dht(DHTPIN, DHTTYPE);\nvoid setup() {\n Serial.begin(9600);\n Serial.println(\"DHT22 Sensor Reading...\");\n dht.begin();\n}\nvoid loop() {\n float humidity = dht.readHumidity();\n float temperature = dht.readTemperature();\n if (isnan(humidity) || isnan(temperature)) {\n Serial.println(\"Failed to read from DHT22 sensor!\");\n return;\n }\n Serial.print(\"Temperature: \");\n Serial.print(temperature);\n Serial.print(\" °C | Humidity: \");\n Serial.print(humidity);\n Serial.println(\" %\");\n delay(2000);\n}",
-      "tinkerLink": "https://www.tinkercad.com/things/3i9qRTIFZWE/editel?returnTo=%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=hsS1rIrbXvm7p2rEIGkJkeFWdEFviDhxxdf1sBSqeko"
+      "tinkerLink": "https://www.tinkercad.com/things/hGUI0ARFKpr-temperature-log/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=3xemjPWZVVBByGs-YOj9kqtF_9fpYkDDPoJgMicttWU"
     },
     {
       "exp_no": 7,
@@ -52,7 +52,7 @@
       "exp_no": 9,
       "exp_name": "Write a program to interface a flame/smoke sensor with Arduino and give an alert Message when flame/smoke is detected.",
       "code": "float temp;\nvoid setup()\n{\nSerial.begin(9600);\n pinMode(A1,INPUT);\n pinMode(4,OUTPUT);\n pinMode(3,OUTPUT);\n}\nvoid loop()\n{\n temp=analogRead(A1);\n temp=((temp*5)/1024);\n temp=(temp-0.5)*100;\n Serial.print(temp);\n if(temp<=80)\n {\n Serial.println(\"Flame not detected\");\n digitalWrite(4,LOW);\n digitalWrite(3,LOW);\n }\n else\n {\n Serial.println(\"Flame detected\");\n digitalWrite(4,HIGH);\n digitalWrite(3,HIGH);\n }\n }",
-      "tinkerLink": "https://www.tinkercad.com/things/6bcoaWZWrfs/editel?returnTo=%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=2Yd9N350SpHZ9a2pkS-R5ZoM3ECyDMgqfBcfIiQRMng"
+      "tinkerLink": "https://www.tinkercad.com/things/8KpsAW9nSIh-incredible-crift/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard%2Fdesigns%2Fcircuits&sharecode=7xtlY6vg-hpI1VHrGfEaxN7qzgb4EoaTJ4aipZF1riw"
     },
     {
       "exp_no": 10,
